@@ -1,0 +1,116 @@
+/* Custom travel planner styles */
+:root {
+  --primary: #0284c7;
+  --primary-dark: #0369a1;
+  --primary-light: #e0f2fe;
+  --secondary: #f97316;
+  --accent: #10b981;
+  --bg-gradient: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Subtle pattern overlay */
+.hero-pattern {
+  background-color: #0f172a;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+/* Timeline Custom Styles */
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 20px;
+  width: 3px;
+  background: linear-gradient(to bottom, #0284c7, #3b82f6, #f97316, #10b981);
+  border-radius: 9999px;
+}
+
+@media (min-width: 768px) {
+  .timeline-line::before {
+    left: 24px;
+  }
+}
+
+/* Card hover animation */
+.travel-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.travel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 24px -6px rgba(0, 0, 0, 0.08), 0 8px 12px -4px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Leaflet Marker Styling */
+.custom-map-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  border: 2px solid white;
+}
+
+.marker-attraction {
+  background: #0284c7;
+}
+
+.marker-restaurant {
+  background: #ea580c;
+}
+
+/* Print Styles */
+@media print {
+  header, #search-section, #api-settings-btn, #action-buttons, footer, .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .glass-card {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+
+  #results-container {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .timeline-item {
+    page-break-inside: avoid;
+  }
+
+  #map {
+    display: none !important;
+  }
+}
